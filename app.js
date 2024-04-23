@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
@@ -68,8 +68,8 @@ passport.serializeUser(function(user, cb) {
   });
 
 passport.use(new GoogleStrategy({
-    clientID: "239393609458-uu6lu6ucosc3csf2i9bi3rl5ld3or5v0.apps.googleusercontent.com",
-    clientSecret: "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" ,
+    clientID: process.env.GOOGLE_CLIENT_ID,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET ,
     callbackURL: "http://localhost:3000/auth/google/secrets",
   },
   function(accessToken, refreshToken, profile, cb) {
